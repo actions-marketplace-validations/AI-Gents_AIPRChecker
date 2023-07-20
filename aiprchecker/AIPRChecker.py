@@ -5,7 +5,7 @@ import requests
 import tiktoken
 
 
-from AIPRCheckerPrompts import PERSONALITY, FINAL_CLARIFICATIONS, CHECK_SECURITY, CHECK_BUGS_AND_OPTIMIZATION
+from .AIPRCheckerPrompts import PERSONALITY, FINAL_CLARIFICATIONS, CHECK_SECURITY, CHECK_BUGS_AND_OPTIMIZATION
 
 handler = colorlog.StreamHandler()
 handler.setFormatter(colorlog.ColoredFormatter('%(log_color)s%(levelname)s:%(message)s'))
