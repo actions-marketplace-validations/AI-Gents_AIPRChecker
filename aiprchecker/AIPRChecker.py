@@ -66,7 +66,7 @@ class AIPRChecker():
 
         return response.json()
 
-    def analyze_patch(self, msg):
+    def analyze_patch(self):
         """Function that analyzes a patch"""
 
         # Prepare a comment with the diffs of all changed files
