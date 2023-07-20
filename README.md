@@ -19,6 +19,5 @@ jobs:
         with:
           api-key: ${{ secrets.OPENAI_API_KEY }}
           model: 'gpt-4'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 ``````
