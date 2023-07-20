@@ -8,9 +8,7 @@ Create a Github Action like the following:
 
 ```yaml
 name: AIPRChecker - Check for security issues and code smells
-on: 
-    pull_request: [opened, synchronize, reopened]
-    pull_request_target: [opened, synchronize, reopened]
+on: [pull_request, pull_request_target]
 
 jobs:
   test:
@@ -25,3 +23,5 @@ jobs:
 ```
 
 You need to give **write access to the GITHUB_TOKEN** secret to the action: Go to `Settings` > `Actions` > `General` in the `Workflow permissions` section check `Read and write permissions`.
+
+*Depending on your needs remove `pull_request_target` or `pull_request` from the `on` section.*
