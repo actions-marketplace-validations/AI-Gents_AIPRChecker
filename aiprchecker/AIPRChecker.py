@@ -27,7 +27,7 @@ class AIPRChecker():
         self.headers = {'Authorization': f'token {self.github_token}'}
         openai.api_key = api_key
     
-    def lenTokens(self,prompt, model):
+    def lenTokens(self, prompt, model):
         encoding = tiktoken.encoding_for_model(model)
         return len(encoding.encode(prompt))
 
@@ -39,7 +39,6 @@ class AIPRChecker():
 
         messages = [
             {"role": "system", "content": PERSONALITY},
-            {"role": "system", "content": self.program_specs},
             {"role": "user", "content": prompt},
             {"role": "system", "content": FINAL_CLARIFICATIONS}
         ]
