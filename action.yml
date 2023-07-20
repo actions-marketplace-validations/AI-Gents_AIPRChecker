@@ -18,6 +18,9 @@ runs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.10'
+    - uses: actions/checkout@v3
+      with:
+        repository: 'AI-Gents/AIPRChecker'
     - name: Check path
       run: |
         pwd
