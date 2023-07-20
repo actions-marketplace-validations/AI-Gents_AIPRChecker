@@ -46,3 +46,6 @@ def main():
     aiprchecker = AIPRChecker(api_key, gh_token, repo, pr_number, model)
 
     aiprchecker.analyze_patch()
+
+if __name__ == "__main__":
+    main()

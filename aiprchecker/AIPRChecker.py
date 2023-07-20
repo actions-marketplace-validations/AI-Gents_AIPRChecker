@@ -52,6 +52,8 @@ class AIPRChecker():
 
         all_text = response["choices"][0]["message"]["content"]
 
+        logger.info(f"Response:\n{all_text}")
+
         return all_text
     
 
