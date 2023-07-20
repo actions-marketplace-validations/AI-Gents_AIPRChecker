@@ -8,7 +8,9 @@ Create a Github Action like the following:
 
 ```yaml
 name: AIPRChecker - Check for security issues and code smells
-on: [pull_request, pull_request_target]
+on: 
+    pull_request: [opened, synchronize, reopened]
+    pull_request_target: [opened, synchronize, reopened]
 
 jobs:
   test:
