@@ -20,4 +20,6 @@ jobs:
           api-key: ${{ secrets.OPENAI_API_KEY }}
           model: 'gpt-4'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-``````
+```
+
+You need to give **write access to the GITHUB_TOKEN** secret to the action: Go to `Settings` > `Actions` > `General` in the `Workflow permissions` section check `Read and write permissions`.

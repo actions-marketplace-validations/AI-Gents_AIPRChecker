@@ -5,10 +5,15 @@ PERSONALITY = """You are a developer & cybersecurity expert. You analize code an
 The feedack is as efficient and detailed as possible."""
 
 
-CHECK_SECURITY = """Given the following PR patches check if there are any security issues, vulnerabilities, backdoors or malicious code inside the code and return a JSON giving details about them.
-"""
-
-CHECK_BUGS_AND_OPTIMIZATION = """Given the following PR patches check if there are any optimization issues or bugs inside the code and return a JSON giving details about them.
+CHECK_SECURITY_AND_BUGS = """Given the following PR patches check if there are any:
+- Security issues
+- Vulnerabilities
+- Backdoors
+- Potentially malicious or suspicious code.
+- Leaks of sensitive information
+- Code bugs
+- Optimization issues
+- Code smells
 """
 
 FINAL_CLARIFICATIONS = """Your response must specify the file path and lines affected by each comment and details about why there is an issue."""

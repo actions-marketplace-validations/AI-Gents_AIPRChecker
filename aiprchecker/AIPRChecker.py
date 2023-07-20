@@ -5,7 +5,7 @@ import requests
 import tiktoken
 
 
-from .AIPRCheckerPrompts import PERSONALITY, FINAL_CLARIFICATIONS, CHECK_SECURITY, CHECK_BUGS_AND_OPTIMIZATION
+from .AIPRCheckerPrompts import PERSONALITY, FINAL_CLARIFICATIONS, CHECK_SECURITY_AND_BUGS
 
 handler = colorlog.StreamHandler()
 handler.setFormatter(colorlog.ColoredFormatter('%(log_color)s%(levelname)s:%(message)s'))
@@ -70,20 +70,19 @@ class AIPRChecker():
 
         # Prepare a comment with the diffs of all changed files
         diff_files = self.get_gh_diff_files()
-        for orig_msg in [CHECK_SECURITY, CHECK_BUGS_AND_OPTIMIZATION]:
-            msg = orig_msg
-            for diff_file in diff_files:
-                new_part = f'Diff for {diff_file["filename"]}:\n```\n{diff_file["patch"]}\n```\n\n'
-                if self.lenTokens(msg+new_part, self.model) > 3000:
-                    answer = self.contact(msg)
-                    self.post_gh_comment(answer)
-                    msg = orig_msg
-
-                msg += new_part             
-        
-            if msg != orig_msg:
+        msg = CHECK_SECURITY_AND_BUGS
+        for diff_file in diff_files:
+            new_part = f'Diff for {diff_file["filename"]}:\n```\n{diff_file["patch"]}\n```\n\n'
+            if self.lenTokens(msg+new_part, self.model) > 3000:
                 answer = self.contact(msg)
                 self.post_gh_comment(answer)
+                msg = CHECK_SECURITY_AND_BUGS
+
+            msg += new_part             
+    
+        if msg != CHECK_SECURITY_AND_BUGS:
+            answer = self.contact(msg)
+            self.post_gh_comment(answer)
 
     
     def post_gh_comment(self, comment: str):
