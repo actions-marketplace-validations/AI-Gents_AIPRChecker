@@ -8,6 +8,9 @@ inputs:
     description: 'Model to use'
     required: false
     default: 'gpt-4'
+  github-token:
+    description: 'GitHub token'
+    required: true
 runs:
   using: 'composite'
   steps:
@@ -25,4 +28,4 @@ runs:
         python main.py --api-key "${{ inputs.api-key }}" --model "${{ inputs.model }}"
       shell: bash
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
